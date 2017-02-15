@@ -55,7 +55,12 @@
     }
     
     CSContact *contact = (self.contacts)[indexPath.row];
-    cell.textLabel.text = contact.fullName;
+    
+    UIImageView *thumbnail = (UIImageView *)[cell viewWithTag:100];
+    thumbnail.image = [UIImage imageWithData:contact.thumbnailImageData];
+    
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
+    nameLabel.text = contact.fullName;
     
     return cell;
 }
