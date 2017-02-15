@@ -15,6 +15,7 @@
 		8AE513861E52C0A4001DA27D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE513841E52C0A4001DA27D /* LaunchScreen.storyboard */; };
 		8AE513911E52C0A5001DA27D /* ContactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513901E52C0A5001DA27D /* ContactTests.m */; };
 		8AE5139C1E52C0A5001DA27D /* ContactUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE5139B1E52C0A5001DA27D /* ContactUITests.m */; };
+		8AE513AB1E52C117001DA27D /* CSContactScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513AA1E52C117001DA27D /* CSContactScanner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		8AE513971E52C0A5001DA27D /* ContactUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE5139B1E52C0A5001DA27D /* ContactUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactUITests.m; sourceTree = "<group>"; };
 		8AE5139D1E52C0A5001DA27D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE513A91E52C117001DA27D /* CSContactScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSContactScanner.h; sourceTree = "<group>"; };
+		8AE513AA1E52C117001DA27D /* CSContactScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSContactScanner.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				8AE513841E52C0A4001DA27D /* LaunchScreen.storyboard */,
 				8AE513871E52C0A4001DA27D /* Info.plist */,
 				8AE513761E52C0A4001DA27D /* Supporting Files */,
+				8AE513A91E52C117001DA27D /* CSContactScanner.h */,
+				8AE513AA1E52C117001DA27D /* CSContactScanner.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AE5137E1E52C0A4001DA27D /* ViewController.m in Sources */,
+				8AE513AB1E52C117001DA27D /* CSContactScanner.m in Sources */,
 				8AE5137B1E52C0A4001DA27D /* AppDelegate.m in Sources */,
 				8AE513781E52C0A4001DA27D /* main.m in Sources */,
 			);
