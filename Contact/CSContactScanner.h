@@ -12,6 +12,8 @@
 
 @interface CSContactScanner : NSObject
 
-- (NSMutableArray*) getAllContacts;
++ (id)contactManager;
+
+- (NSMutableArray*)getAllContacts;
 
 @end

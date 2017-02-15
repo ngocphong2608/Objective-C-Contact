@@ -10,6 +10,16 @@
 
 @implementation CSContactScanner
 
++ (id)contactManager {
+    
+    static CSContactScanner *scanner = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        scanner = [CSContactScanner new];
+    });
+    return scanner;
+}
+
 
 - (NSMutableArray*) getAllContacts {
     
@@ -45,13 +55,6 @@
         }
         
         dispatch_group_leave(contactGroup);
-        
-//        CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
-//        
-//        for (CNContact *contact in contacts) {
-//            NSString *string = [formatter stringFromContact:contact];
-//            NSLog(@"contact = %@", string);
-//        }
     }];
     
     dispatch_group_wait(contactGroup, DISPATCH_TIME_FOREVER);

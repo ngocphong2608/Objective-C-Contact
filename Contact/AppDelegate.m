@@ -21,10 +21,8 @@
     
     ContactsViewController *contactController = [navigationController viewControllers][0];
     
-    CSContactScanner *scanner = [CSContactScanner new];
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        contactController.contacts = scanner.getAllContacts;
+        contactController.contacts = [CSContactScanner.contactManager getAllContacts];
     });
 
     return YES;
