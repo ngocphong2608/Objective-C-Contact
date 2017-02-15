@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactsViewController.h"
+#import "CSContactScanner.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

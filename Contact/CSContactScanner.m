@@ -28,6 +28,8 @@
                 // this is dispatched to the main queue because this request could be running on background thread
                 NSLog(@"User denied");
             });
+            
+            dispatch_group_leave(contactGroup);
             return;
         }
         

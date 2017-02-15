@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8AE513781E52C0A4001DA27D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513771E52C0A4001DA27D /* main.m */; };
 		8AE5137B1E52C0A4001DA27D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE5137A1E52C0A4001DA27D /* AppDelegate.m */; };
-		8AE5137E1E52C0A4001DA27D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE5137D1E52C0A4001DA27D /* ViewController.m */; };
 		8AE513811E52C0A4001DA27D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE5137F1E52C0A4001DA27D /* Main.storyboard */; };
 		8AE513831E52C0A4001DA27D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE513821E52C0A4001DA27D /* Assets.xcassets */; };
 		8AE513861E52C0A4001DA27D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE513841E52C0A4001DA27D /* LaunchScreen.storyboard */; };
@@ -17,6 +16,7 @@
 		8AE5139C1E52C0A5001DA27D /* ContactUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE5139B1E52C0A5001DA27D /* ContactUITests.m */; };
 		8AE513AB1E52C117001DA27D /* CSContactScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513AA1E52C117001DA27D /* CSContactScanner.m */; };
 		8AE513AE1E54106D001DA27D /* CSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513AD1E54106D001DA27D /* CSContact.m */; };
+		8AE513B21E544048001DA27D /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513B11E544048001DA27D /* ContactsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,6 @@
 		8AE513771E52C0A4001DA27D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8AE513791E52C0A4001DA27D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8AE5137A1E52C0A4001DA27D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8AE5137C1E52C0A4001DA27D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8AE5137D1E52C0A4001DA27D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8AE513801E52C0A4001DA27D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AE513821E52C0A4001DA27D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AE513851E52C0A4001DA27D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +55,8 @@
 		8AE513AA1E52C117001DA27D /* CSContactScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSContactScanner.m; sourceTree = "<group>"; };
 		8AE513AC1E54106D001DA27D /* CSContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSContact.h; sourceTree = "<group>"; };
 		8AE513AD1E54106D001DA27D /* CSContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSContact.m; sourceTree = "<group>"; };
+		8AE513B01E544048001DA27D /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		8AE513B11E544048001DA27D /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +107,9 @@
 		8AE513751E52C0A4001DA27D /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				8AE513AF1E543FC2001DA27D /* Controllers */,
 				8AE513791E52C0A4001DA27D /* AppDelegate.h */,
 				8AE5137A1E52C0A4001DA27D /* AppDelegate.m */,
-				8AE5137C1E52C0A4001DA27D /* ViewController.h */,
-				8AE5137D1E52C0A4001DA27D /* ViewController.m */,
 				8AE5137F1E52C0A4001DA27D /* Main.storyboard */,
 				8AE513821E52C0A4001DA27D /* Assets.xcassets */,
 				8AE513841E52C0A4001DA27D /* LaunchScreen.storyboard */,
@@ -148,6 +147,15 @@
 				8AE5139D1E52C0A5001DA27D /* Info.plist */,
 			);
 			path = ContactUITests;
+			sourceTree = "<group>";
+		};
+		8AE513AF1E543FC2001DA27D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8AE513B01E544048001DA27D /* ContactsViewController.h */,
+				8AE513B11E544048001DA27D /* ContactsViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AE5137E1E52C0A4001DA27D /* ViewController.m in Sources */,
+				8AE513B21E544048001DA27D /* ContactsViewController.m in Sources */,
 				8AE513AB1E52C117001DA27D /* CSContactScanner.m in Sources */,
 				8AE5137B1E52C0A4001DA27D /* AppDelegate.m in Sources */,
 				8AE513781E52C0A4001DA27D /* main.m in Sources */,

@@ -17,6 +17,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    
+    ContactsViewController *contactController = [navigationController viewControllers][0];
+    
+    CSContactScanner *scanner = [CSContactScanner new];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        contactController.contacts = scanner.getAllContacts;
+    });
+
     return YES;
 }
 
