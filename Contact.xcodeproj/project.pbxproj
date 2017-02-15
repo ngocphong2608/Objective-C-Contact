@@ -17,6 +17,7 @@
 		8AE513AB1E52C117001DA27D /* CSContactScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513AA1E52C117001DA27D /* CSContactScanner.m */; };
 		8AE513AE1E54106D001DA27D /* CSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513AD1E54106D001DA27D /* CSContact.m */; };
 		8AE513B21E544048001DA27D /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513B11E544048001DA27D /* ContactsViewController.m */; };
+		8AE513B51E545C3D001DA27D /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513B41E545C3D001DA27D /* ContactCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		8AE513AD1E54106D001DA27D /* CSContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSContact.m; sourceTree = "<group>"; };
 		8AE513B01E544048001DA27D /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		8AE513B11E544048001DA27D /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		8AE513B31E545C3D001DA27D /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
+		8AE513B41E545C3D001DA27D /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				8AE513AA1E52C117001DA27D /* CSContactScanner.m */,
 				8AE513AC1E54106D001DA27D /* CSContact.h */,
 				8AE513AD1E54106D001DA27D /* CSContact.m */,
+				8AE513B31E545C3D001DA27D /* ContactCell.h */,
+				8AE513B41E545C3D001DA27D /* ContactCell.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE513B51E545C3D001DA27D /* ContactCell.m in Sources */,
 				8AE513B21E544048001DA27D /* ContactsViewController.m in Sources */,
 				8AE513AB1E52C117001DA27D /* CSContactScanner.m in Sources */,
 				8AE5137B1E52C0A4001DA27D /* AppDelegate.m in Sources */,

@@ -48,19 +48,17 @@
     
     static NSString *CellIdentifier = @"ContactCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[ContactCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
     
     CSContact *contact = (self.contacts)[indexPath.row];
     
-    UIImageView *thumbnail = (UIImageView *)[cell viewWithTag:100];
-    thumbnail.image = [UIImage imageWithData:contact.thumbnailImageData];
-    
-    UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
-    nameLabel.text = contact.fullName;
+    cell.thumbnailImageView.image = [UIImage imageWithData:contact.thumbnailImageData];
+  
+    cell.nameLabel.text = contact.fullName;
     
     return cell;
 }

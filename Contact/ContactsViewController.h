@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CSContact.h"
+#import "ContactCell.h"
 
 @interface ContactsViewController : UITableViewController
 
