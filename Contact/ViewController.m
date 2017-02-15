@@ -20,13 +20,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         CSContactScanner *scanner = [CSContactScanner new];
         NSMutableArray *contacts = [scanner getAllContacts];
-        CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
         
-        for (CNContact *contact in contacts) {
-            NSString *string = [formatter stringFromContact:contact];
-            NSLog(@"contact = %@", string);
+        for (CSContact *contact in contacts) {
+            NSLog(@"%@, %@", contact.fullName, contact.thumbnailImageData);
         }
     });
 }

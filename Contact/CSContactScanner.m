@@ -32,10 +32,10 @@
         }
         
         NSError *fetchError;
-        CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch: @[CNContactIdentifierKey, [CNContactFormatter descriptorForRequiredKeysForStyle:CNContactFormatterStyleFullName]]];
+        CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch: @[CNContactIdentifierKey, [CNContactFormatter descriptorForRequiredKeysForStyle:CNContactFormatterStyleFullName], CNContactThumbnailImageDataKey]];
         
         BOOL success = [store enumerateContactsWithFetchRequest:request error:&fetchError usingBlock:^(CNContact *contact, BOOL *stop) {
-            [contacts addObject:contact];
+            [contacts addObject:[[CSContact alloc] initWithContact:contact ]];
         }];
         
         if (!success) {

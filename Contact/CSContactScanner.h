@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @import Contacts;
+#import "CSContact.h"
 
 @interface CSContactScanner : NSObject
 
