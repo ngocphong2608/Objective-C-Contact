@@ -18,6 +18,8 @@
 		8AE513AE1E54106D001DA27D /* CSContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513AD1E54106D001DA27D /* CSContact.m */; };
 		8AE513B21E544048001DA27D /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513B11E544048001DA27D /* ContactsViewController.m */; };
 		8AE513B51E545C3D001DA27D /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513B41E545C3D001DA27D /* ContactCell.m */; };
+		8AE513B81E54674B001DA27D /* ic_send.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AE513B71E54674B001DA27D /* ic_send.png */; };
+		8AE513BA1E546A13001DA27D /* default_thumbnail.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 8AE513B91E546A13001DA27D /* default_thumbnail.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		8AE513B11E544048001DA27D /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		8AE513B31E545C3D001DA27D /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
 		8AE513B41E545C3D001DA27D /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
+		8AE513B71E54674B001DA27D /* ic_send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_send.png; sourceTree = "<group>"; };
+		8AE513B91E546A13001DA27D /* default_thumbnail.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_thumbnail.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 		8AE513751E52C0A4001DA27D /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				8AE513B61E546716001DA27D /* Icons */,
 				8AE513AF1E543FC2001DA27D /* Controllers */,
 				8AE513791E52C0A4001DA27D /* AppDelegate.h */,
 				8AE5137A1E52C0A4001DA27D /* AppDelegate.m */,
@@ -161,6 +166,15 @@
 				8AE513B11E544048001DA27D /* ContactsViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8AE513B61E546716001DA27D /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				8AE513B91E546A13001DA27D /* default_thumbnail.JPG */,
+				8AE513B71E54674B001DA27D /* ic_send.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +286,8 @@
 				8AE513861E52C0A4001DA27D /* LaunchScreen.storyboard in Resources */,
 				8AE513831E52C0A4001DA27D /* Assets.xcassets in Resources */,
 				8AE513811E52C0A4001DA27D /* Main.storyboard in Resources */,
+				8AE513BA1E546A13001DA27D /* default_thumbnail.JPG in Resources */,
+				8AE513B81E54674B001DA27D /* ic_send.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

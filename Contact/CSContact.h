@@ -14,6 +14,7 @@
 @property NSString *fullName;
 @property NSData *thumbnailImageData;
 
-- (id) initWithContact:(CNContact *)contact;
+- (id)initWithContact:(CNContact *)contact;
+- (NSString *)get2CharatersByFullName;
 
 @end

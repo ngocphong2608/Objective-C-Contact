@@ -56,11 +56,19 @@
     
     CSContact *contact = (self.contacts)[indexPath.row];
     
-    cell.thumbnailImageView.image = [UIImage imageWithData:contact.thumbnailImageData];
+    [self setThumbnailImageForCell:cell withImageData:contact.thumbnailImageData orShortName:contact.get2CharatersByFullName];
   
     cell.nameLabel.text = contact.fullName;
     
     return cell;
+}
+
+- (void) setThumbnailImageForCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
+    if (imageData == NULL) {
+        cell.imageNameLabel.text = shortName;
+    } else {
+        cell.thumbnailImageView.image = [UIImage imageWithData:imageData];
+    }
 }
 
 

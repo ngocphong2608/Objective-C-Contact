@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contacts View Controller-->
+        <!--Choose Friends-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ContactsViewController" sceneMemberID="viewController">
@@ -59,12 +59,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msl-Hr-BhP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default_thumbnail.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Msl-Hr-BhP">
+                                                    <rect key="frame" x="10" y="2" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPd-ts-0mQ">
-                                                    <rect key="frame" x="50" y="0.0" width="325" height="21"/>
+                                                    <rect key="frame" x="60" y="11" width="315" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqD-8d-DSd">
+                                                    <rect key="frame" x="10" y="12" width="40" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -73,6 +80,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imageNameLabel" destination="LqD-8d-DSd" id="KuR-Qq-kHN"/>
                                             <outlet property="nameLabel" destination="LPd-ts-0mQ" id="Xsl-NZ-DOz"/>
                                             <outlet property="thumbnailImageView" destination="Msl-Hr-BhP" id="p53-fx-yio"/>
                                         </connections>
@@ -86,9 +94,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="L7c-yZ-fc6"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Choose Friends" id="L7c-yZ-fc6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vuo-LQ-Vay"/>
+                        <barButtonItem key="rightBarButtonItem" image="ic_send.png" id="Mu2-53-DWb"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="view" destination="b8p-cf-oqB" id="fTd-4G-0R3"/>
+                        <outlet property="view" destination="b8p-cf-oqB" id="GuZ-t8-MSd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,4 +127,8 @@
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="default_thumbnail.JPG" width="40" height="40"/>
+        <image name="ic_send.png" width="24" height="24"/>
+    </resources>
 </document>

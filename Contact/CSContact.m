@@ -10,7 +10,7 @@
 
 @implementation CSContact
 
-- (id) initWithContact:(CNContact *)contact {
+- (id)initWithContact:(CNContact *)contact {
     
     self = [super init];
     if (self) {
@@ -22,6 +22,10 @@
         _thumbnailImageData = contact.thumbnailImageData;
     }
     return self;
+}
+
+- (NSString *)get2CharatersByFullName {
+    return [_fullName substringToIndex:1];
 }
 
 @end
