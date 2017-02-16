@@ -12,6 +12,7 @@
 
 @interface ContactsViewController : UITableViewController
 
-@property (strong, atomic) NSMutableArray *contacts;
+@property (strong, nonatomic) NSMutableArray *contacts;
+
 
 @end
