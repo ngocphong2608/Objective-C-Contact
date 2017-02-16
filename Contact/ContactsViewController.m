@@ -23,13 +23,16 @@
     [self.tableView setEditing:YES animated:YES];
     
     _contactIndexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
-    
-    [self buildContactsDict];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setContacts:(NSMutableArray *)contacts {
+    _contacts = contacts;
+    [self buildContactsDict];
 }
 
 #pragma mark - Table view private methods
@@ -55,7 +58,7 @@
         [_contactsDict[[contact.fullName substringToIndex:1]] addObject:contact];
     }
     
-    NSLog(@"%@", _contactsDict);
+    //NSLog(@"%@", _contactsDict);
 }
 
 

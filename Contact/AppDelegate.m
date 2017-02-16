@@ -23,6 +23,12 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         contactController.contacts = [CSContactScanner.contactManager getAllContacts];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [contactController.tableView reloadData];
+            NSLog(@"Updated");
+        });
     });
 
     return YES;

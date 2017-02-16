@@ -14,5 +14,6 @@
 
 @property (strong, nonatomic) NSMutableArray *contacts;
 
+- (void) buildContactsDict;
 
 @end
