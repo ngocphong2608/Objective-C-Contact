@@ -23,6 +23,18 @@
     [self.tableView setEditing:YES animated:YES];
     
     _contactIndexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
+    
+    // load contacts
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        _contacts = [CSContactScanner.contactManager getAllContacts];
+        [self buildContactsDict];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.tableView reloadData];
+            NSLog(@"Updated");
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,10 +42,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setContacts:(NSMutableArray *)contacts {
-    _contacts = contacts;
-    [self buildContactsDict];
-}
+//- (void)setContacts:(NSMutableArray *)contacts {
+//    
+//    _contacts = contacts;
+//    [self buildContactsDict];
+//}
 
 #pragma mark - Table view private methods
 
@@ -58,7 +71,7 @@
         [_contactsDict[[contact.fullName substringToIndex:1]] addObject:contact];
     }
     
-    //NSLog(@"%@", _contactsDict);
+    NSLog(@"%@", _contactsDict);
 }
 
 
@@ -90,6 +103,9 @@
     if (cell == nil) {
         cell = [[ContactCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
+    } else {
+        cell.thumbnailImageView.image = NULL;
+        cell.imageNameLabel.text = @"";
     }
     
     NSString *sectionTitle = [_contactIndexTitles objectAtIndex:indexPath.section];

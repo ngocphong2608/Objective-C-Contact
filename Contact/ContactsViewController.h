@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CSContact.h"
 #import "ContactCell.h"
+#import "CSContactScanner.h"
 
 @interface ContactsViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *contacts;
-
-- (void) buildContactsDict;
 
 @end
