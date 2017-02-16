@@ -102,7 +102,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="view" destination="b8p-cf-oqB" id="GuZ-t8-MSd"/>
+                        <outlet property="view" destination="b8p-cf-oqB" id="VWD-A0-nZr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
