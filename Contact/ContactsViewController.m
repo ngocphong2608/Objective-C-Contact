@@ -29,10 +29,9 @@
         _contacts = [CSContactScanner.contactManager getAllContacts];
         [self buildContactsDict];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
+        dispatch_async(dispatch_get_main_queue(), ^{    
             [self.tableView reloadData];
-            NSLog(@"Updated");
+            //NSLog(@"Updated");
         });
     });
 }
@@ -71,7 +70,7 @@
         [_contactsDict[[contact.fullName substringToIndex:1]] addObject:contact];
     }
     
-    NSLog(@"%@", _contactsDict);
+    //NSLog(@"%@", _contactsDict);
 }
 
 

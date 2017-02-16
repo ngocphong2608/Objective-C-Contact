@@ -115,7 +115,10 @@
 			isa = PBXGroup;
 			children = (
 				8AE513B61E546716001DA27D /* Icons */,
+				B5BAB4AF1E55FD3A005E7CE2 /* CustomTableCells */,
+				B5BAB4AE1E55FCF0005E7CE2 /* Models */,
 				8AE513AF1E543FC2001DA27D /* Controllers */,
+				B5BAB4AD1E55FCB5005E7CE2 /* DataProvider */,
 				8AE513791E52C0A4001DA27D /* AppDelegate.h */,
 				8AE5137A1E52C0A4001DA27D /* AppDelegate.m */,
 				8AE5137F1E52C0A4001DA27D /* Main.storyboard */,
@@ -123,12 +126,6 @@
 				8AE513841E52C0A4001DA27D /* LaunchScreen.storyboard */,
 				8AE513871E52C0A4001DA27D /* Info.plist */,
 				8AE513761E52C0A4001DA27D /* Supporting Files */,
-				8AE513A91E52C117001DA27D /* CSContactScanner.h */,
-				8AE513AA1E52C117001DA27D /* CSContactScanner.m */,
-				8AE513AC1E54106D001DA27D /* CSContact.h */,
-				8AE513AD1E54106D001DA27D /* CSContact.m */,
-				8AE513B31E545C3D001DA27D /* ContactCell.h */,
-				8AE513B41E545C3D001DA27D /* ContactCell.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -175,6 +172,33 @@
 				8AE513B71E54674B001DA27D /* ic_send.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		B5BAB4AD1E55FCB5005E7CE2 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				8AE513A91E52C117001DA27D /* CSContactScanner.h */,
+				8AE513AA1E52C117001DA27D /* CSContactScanner.m */,
+			);
+			name = DataProvider;
+			sourceTree = "<group>";
+		};
+		B5BAB4AE1E55FCF0005E7CE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8AE513AC1E54106D001DA27D /* CSContact.h */,
+				8AE513AD1E54106D001DA27D /* CSContact.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B5BAB4AF1E55FD3A005E7CE2 /* CustomTableCells */ = {
+			isa = PBXGroup;
+			children = (
+				8AE513B31E545C3D001DA27D /* ContactCell.h */,
+				8AE513B41E545C3D001DA27D /* ContactCell.m */,
+			);
+			name = CustomTableCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,6 +571,7 @@
 				8AE513A21E52C0A5001DA27D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8AE513A31E52C0A5001DA27D /* Build configuration list for PBXNativeTarget "ContactTests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +580,7 @@
 				8AE513A51E52C0A5001DA27D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8AE513A61E52C0A5001DA27D /* Build configuration list for PBXNativeTarget "ContactUITests" */ = {
 			isa = XCConfigurationList;
@@ -563,6 +589,7 @@
 				8AE513A81E52C0A5001DA27D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
