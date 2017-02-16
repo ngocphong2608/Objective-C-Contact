@@ -59,7 +59,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msl-Hr-BhP">
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default_thumbnail.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="Msl-Hr-BhP">
                                                     <rect key="frame" x="10" y="2" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.30007000852645854" green="0.87229567307692313" blue="0.20376796353586124" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,6 +129,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="default_thumbnail.JPG" width="40" height="40"/>
         <image name="ic_send.png" width="24" height="24"/>
     </resources>
 </document>
