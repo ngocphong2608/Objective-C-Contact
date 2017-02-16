@@ -25,6 +25,23 @@
 }
 
 - (NSString *)get2CharatersByFullName {
+    
+    if (_fullName == NULL || [_fullName length] < 1)
+        return @"";
+    
+    NSMutableArray *parts = [NSMutableArray arrayWithArray:[_fullName componentsSeparatedByCharactersInSet:[NSCharacterSet  whitespaceCharacterSet]]];
+    [parts removeObjectIdenticalTo:@""];
+    
+    if (parts.count < 1)
+        return @"";
+    else if (parts.count < 2)
+        return [parts[0] substringToIndex:1];
+    else {
+        NSString *firstCharacter = [parts[0] substringToIndex:1];
+        NSString *secondCharacter = [parts[parts.count - 1] substringToIndex:1];
+        return [firstCharacter stringByAppendingString:secondCharacter];
+    }
+
     return [_fullName substringToIndex:1];
 }
 
