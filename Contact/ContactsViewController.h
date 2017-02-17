@@ -12,7 +12,7 @@
 #import "CSContactScanner.h"
 #import "SelectedContactCell.h"
 
-@interface ContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) NSMutableArray *contacts;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

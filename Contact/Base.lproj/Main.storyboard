@@ -78,19 +78,19 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectedContactCell" id="ufL-pR-mhU" customClass="SelectedContactCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <rect key="frame" x="0.0" y="-3" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="517-e0-j1S">
-                                                    <rect key="frame" x="2" y="2" width="40" height="40"/>
+                                                    <rect key="frame" x="5" y="5" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.20000000000000001" green="0.20392156862745098" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yR-i1-m2a">
-                                                    <rect key="frame" x="2" y="11" width="40" height="22"/>
+                                                    <rect key="frame" x="5" y="14" width="40" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -99,7 +99,6 @@
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <size key="customSize" width="44" height="44"/>
                                         <connections>
                                             <outlet property="imageNameLabel" destination="1yR-i1-m2a" id="5BT-Tu-cGZ"/>
                                             <outlet property="thumbnailImageView" destination="517-e0-j1S" id="rKO-Wf-gGu"/>
@@ -111,10 +110,13 @@
                                     <outlet property="delegate" destination="MWL-UO-NTs" id="4iN-zd-DlP"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6td-5d-2gA">
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Enter name to search" translatesAutoresizingMaskIntoConstraints="NO" id="6td-5d-2gA">
                                 <rect key="frame" x="0.0" y="108" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="MWL-UO-NTs" id="k09-xn-74f"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,24 +133,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RN6-Yz-YUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2280.8000000000002" y="810.94452773613204"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Jhh-T7-mEV">
-            <objects>
-                <viewController id="feJ-RC-d4a" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="I99-76-s1f"/>
-                        <viewControllerLayoutGuide type="bottom" id="gRu-H5-6Cy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MZC-IL-cyh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8zQ-Vy-Lo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2980" y="811"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z40-YA-S2M">

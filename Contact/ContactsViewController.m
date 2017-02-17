@@ -10,25 +10,26 @@
 
 @interface ContactsViewController ()
 
-@property (strong, nonatomic) NSArray *contactIndexTitles;
-@property (strong, nonatomic) NSMutableDictionary *contactsDict;
-
-
-
 @end
 
 @implementation ContactsViewController
 
+NSArray *contactIndexTitles;
+NSMutableDictionary *contactsDict;
 NSMutableArray *selectedContacts;
+//NSArray *searchResults;
+UIImage *defaultThumbnail;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     selectedContacts = [NSMutableArray new];
     
+    defaultThumbnail = [UIImage imageNamed:@"default_thumbnail.JPG"];
+    
     [self.tableView setEditing:YES animated:YES];
     
-    _contactIndexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
+    contactIndexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
     
     // load contacts
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -59,6 +60,7 @@ NSMutableArray *selectedContacts;
 - (void) setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
+        cell.thumbnailImageView.image = defaultThumbnail;
     } else {
         cell.thumbnailImageView.image = [UIImage imageWithData:imageData];
     }
@@ -67,29 +69,29 @@ NSMutableArray *selectedContacts;
 - (void) buildContactsDict {
     
     // init contactsDict
-    _contactsDict = [NSMutableDictionary new];
-    for (NSString *contactIndex in _contactIndexTitles) {
-        [_contactsDict setObject:[NSMutableArray new] forKey:contactIndex];
+    contactsDict = [NSMutableDictionary new];
+    for (NSString *contactIndex in contactIndexTitles) {
+        [contactsDict setObject:[NSMutableArray new] forKey:contactIndex];
     }
     
     for (CSContact *contact in _contacts) {
-        [_contactsDict[[contact.fullName substringToIndex:1]] addObject:contact];
+        [contactsDict[[contact.fullName substringToIndex:1]] addObject:contact];
     }
     
-    //NSLog(@"%@", _contactsDict);
+    //NSLog(@"%@", contactsDict);
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return [_contactsDict count];
+    return [contactsDict count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSString *sectionTitle = [_contactIndexTitles objectAtIndex:section];
-    NSArray *sectionContacts = [_contactsDict objectForKey:sectionTitle];
+    NSString *sectionTitle = [contactIndexTitles objectAtIndex:section];
+    NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     return [sectionContacts count];
 }
 
@@ -106,8 +108,8 @@ NSMutableArray *selectedContacts;
         cell.imageNameLabel.text = @"";
     }
     
-    NSString *sectionTitle = [_contactIndexTitles objectAtIndex:indexPath.section];
-    NSArray *sectionContacts = [_contactsDict objectForKey:sectionTitle];
+    NSString *sectionTitle = [contactIndexTitles objectAtIndex:indexPath.section];
+    NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
@@ -123,12 +125,12 @@ NSMutableArray *selectedContacts;
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    return _contactIndexTitles;
+    return contactIndexTitles;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    return [_contactIndexTitles objectAtIndex:section];
+    return [contactIndexTitles objectAtIndex:section];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,8 +140,8 @@ NSMutableArray *selectedContacts;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *sectionTitle = [_contactIndexTitles objectAtIndex:indexPath.section];
-    NSArray *sectionContacts = [_contactsDict objectForKey:sectionTitle];
+    NSString *sectionTitle = [contactIndexTitles objectAtIndex:indexPath.section];
+    NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
     NSLog(@"user selected %@", [contact fullName]);
@@ -148,14 +150,36 @@ NSMutableArray *selectedContacts;
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *sectionTitle = [_contactIndexTitles objectAtIndex:indexPath.section];
-    NSArray *sectionContacts = [_contactsDict objectForKey:sectionTitle];
+    NSString *sectionTitle = [contactIndexTitles objectAtIndex:indexPath.section];
+    NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
     NSLog(@"user de-selected %@",[contact fullName]);
     [selectedContacts removeObject:contact];
     [_collectionView reloadData];
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 44;
+//}
+//
+//- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+//{
+//    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"fullName contains[c] %@", searchText];
+//    searchResults = [_contacts filteredArrayUsingPredicate:resultPredicate];
+//}
+//
+//
+//-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+//{
+//    [self filterContentForSearchText:searchString
+//                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+//                                      objectAtIndex:[self.searchDisplayController.searchBar
+//                                                     selectedScopeButtonIndex]]];
+//    
+//    return YES;
+//}
 
 #pragma mark - Collection view delegate methods
 
