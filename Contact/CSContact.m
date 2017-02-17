@@ -10,6 +10,14 @@
 
 @implementation CSContact
 
+
+
+/**
+ Create a new contact using a CNContact
+
+ @param contact contact query from contact store
+ @return a cusm contact
+ */
 - (id)initWithContact:(CNContact *)contact {
     
     self = [super init];
@@ -24,6 +32,15 @@
     return self;
 }
 
+
+/**
+ Get 2 characters from contact's fullname
+ if fullname has 2 words this will return 2 characters
+ if fullname has 1 words this will return 1 characters
+ if fullname is empty this will return 0 characters
+
+ @return NSString with 2, 1 or 0 characters
+ */
 - (NSString *)get2CharatersByFullName {
     
     if (_fullName == NULL || [_fullName length] < 1)
@@ -41,8 +58,6 @@
         NSString *secondCharacter = [parts[parts.count - 1] substringToIndex:1];
         return [firstCharacter stringByAppendingString:secondCharacter];
     }
-
-    return [_fullName substringToIndex:1];
 }
 
 @end

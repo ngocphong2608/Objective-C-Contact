@@ -18,7 +18,7 @@ NSArray *contactIndexTitles;
 NSArray *contactSectionTitles;
 NSMutableDictionary *contactsDict;
 NSMutableArray *selectedContacts;
-//NSArray *searchResults;
+
 UIImage *defaultThumbnail;
 
 - (void)viewDidLoad {
@@ -28,18 +28,17 @@ UIImage *defaultThumbnail;
     
     defaultThumbnail = [UIImage imageNamed:@"default_thumbnail.JPG"];
     
+    contactIndexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"];
+    
     [self.tableView setEditing:YES animated:YES];
     
-    contactIndexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
-    
-    // load contacts
+    // load contacts async
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         _contacts = [CSContactScanner.contactManager getAllContacts];
         [self buildContactsDict];
         
         dispatch_async(dispatch_get_main_queue(), ^{    
             [self.tableView reloadData];
-            //NSLog(@"Updated");
         });
     });
 }
@@ -49,14 +48,16 @@ UIImage *defaultThumbnail;
     // Dispose of any resources that can be recreated.
 }
 
-//- (void)setContacts:(NSMutableArray *)contacts {
-//    
-//    _contacts = contacts;
-//    [self buildContactsDict];
-//}
-
 #pragma mark - Table view private methods
 
+/**
+ Each cell has a image and a label.
+ If image is missing, label will be setted as 2 characters of contact's full name
+
+ @param cell the table cell
+ @param imageData image data of contact
+ @param shortName 2 characters of contact's full name
+ */
 - (void)setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName {
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
@@ -66,6 +67,12 @@ UIImage *defaultThumbnail;
     }
 }
 
+
+/**
+ Making a dictionary of contacts
+ The keys of dictionary will be first character off full name
+ If full name is null or empty the key will be '#' character
+ */
 - (void)buildContactsDict {
     
     // init contactsDict
@@ -75,9 +82,16 @@ UIImage *defaultThumbnail;
     }
     
     for (CSContact *contact in _contacts) {
-        [contactsDict[[contact.fullName substringToIndex:1]] addObject:contact];
+        NSString *fullName = contact.fullName;
+        
+        if (fullName == NULL || [fullName length] < 1)
+            [contactsDict[@"#"] addObject:contact];
+        else {
+            [contactsDict[[fullName substringToIndex:1]] addObject:contact];
+        }
     }
     
+    // remove keys have no contacts
     for (NSString *contactIndex in contactIndexTitles) {
         if ([contactsDict[contactIndex] count] < 1) {
             [contactsDict removeObjectForKey:contactIndex];
@@ -215,7 +229,6 @@ UIImage *defaultThumbnail;
     [self setThumbnailImageForCollectionCell:cell withImageData:contact.thumbnailImageData orShortName:contact.get2CharatersByFullName];
     
     return cell;
-
 }
 
 #pragma mark - Collection view delegate
@@ -234,8 +247,15 @@ UIImage *defaultThumbnail;
     }
 }
 
+
+/**
+ Retrive indexPath from contact
+
+ @param contact the contact that user tap on
+ @return indexPath of that contact in contacts tableView
+ */
 - (NSIndexPath *)indexPathFromContact:(CSContact *)contact {
-    // not implement
+    
     NSString *character = [[contact fullName] substringToIndex:1];
     int section = 0;
     for (int i = 0; i < [contactSectionTitles count]; i++) {
