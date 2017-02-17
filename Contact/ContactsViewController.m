@@ -57,7 +57,7 @@ UIImage *defaultThumbnail;
 
 #pragma mark - Table view private methods
 
-- (void)setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
+- (void)setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName {
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
         cell.thumbnailImageView.image = defaultThumbnail;
@@ -141,33 +141,29 @@ UIImage *defaultThumbnail;
     return [contactSectionTitles objectAtIndex:section];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     return [contactSectionTitles indexOfObject:title];
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 3;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *sectionTitle = [contactSectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
-    NSLog(@"user selected %@", [contact fullName]);
+//    NSLog(@"user selected %@", [contact fullName]);
     [selectedContacts addObject:contact];
     [_collectionView reloadData];
 }
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *sectionTitle = [contactSectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
-    NSLog(@"user de-selected %@",[contact fullName]);
+//    NSLog(@"user de-selected %@",[contact fullName]);
     [selectedContacts removeObject:contact];
     [_collectionView reloadData];
 }
