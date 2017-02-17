@@ -15,6 +15,7 @@
 @implementation ContactsViewController
 
 NSArray *contactIndexTitles;
+NSArray *contactSectionTitles;
 NSMutableDictionary *contactsDict;
 NSMutableArray *selectedContacts;
 //NSArray *searchResults;
@@ -56,7 +57,7 @@ UIImage *defaultThumbnail;
 
 #pragma mark - Table view private methods
 
-- (void) setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
+- (void)setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
         cell.thumbnailImageView.image = defaultThumbnail;
@@ -65,7 +66,7 @@ UIImage *defaultThumbnail;
     }
 }
 
-- (void) buildContactsDict {
+- (void)buildContactsDict {
     
     // init contactsDict
     contactsDict = [NSMutableDictionary new];
@@ -77,19 +78,28 @@ UIImage *defaultThumbnail;
         [contactsDict[[contact.fullName substringToIndex:1]] addObject:contact];
     }
     
-    //NSLog(@"%@", contactsDict);
+    for (NSString *contactIndex in contactIndexTitles) {
+        if ([contactsDict[contactIndex] count] < 1) {
+            [contactsDict removeObjectForKey:contactIndex];
+        }
+    }
+    
+    contactSectionTitles = [[contactsDict allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSLog(@"%@", contactsDict);
+    NSLog(@"%@", contactSectionTitles);
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return [contactsDict count];
+    return [contactSectionTitles count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSString *sectionTitle = [contactIndexTitles objectAtIndex:section];
+    NSString *sectionTitle = [contactSectionTitles objectAtIndex:section];
     NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     return [sectionContacts count];
 }
@@ -107,7 +117,7 @@ UIImage *defaultThumbnail;
         cell.imageNameLabel.text = @"";
     }
     
-    NSString *sectionTitle = [contactIndexTitles objectAtIndex:indexPath.section];
+    NSString *sectionTitle = [contactSectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
@@ -128,7 +138,12 @@ UIImage *defaultThumbnail;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    return [contactIndexTitles objectAtIndex:section];
+    return [contactSectionTitles objectAtIndex:section];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [contactSectionTitles indexOfObject:title];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,7 +153,7 @@ UIImage *defaultThumbnail;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *sectionTitle = [contactIndexTitles objectAtIndex:indexPath.section];
+    NSString *sectionTitle = [contactSectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
@@ -148,7 +163,7 @@ UIImage *defaultThumbnail;
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *sectionTitle = [contactIndexTitles objectAtIndex:indexPath.section];
+    NSString *sectionTitle = [contactSectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionContacts = [contactsDict objectForKey:sectionTitle];
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
@@ -213,7 +228,7 @@ UIImage *defaultThumbnail;
 
 }
 
-- (void) setThumbnailImageForCollectionCell:(SelectedContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
+- (void)setThumbnailImageForCollectionCell:(SelectedContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
     } else {
