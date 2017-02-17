@@ -11,8 +11,9 @@
 #import "ContactCell.h"
 #import "CSContactScanner.h"
 
-@interface ContactsViewController : UITableViewController
+@interface ContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *contacts;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

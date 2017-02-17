@@ -114,7 +114,7 @@
 		8AE513751E52C0A4001DA27D /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				8AE513B61E546716001DA27D /* Icons */,
+				8AE513B61E546716001DA27D /* Images */,
 				B5BAB4AF1E55FD3A005E7CE2 /* CustomTableCells */,
 				B5BAB4AE1E55FCF0005E7CE2 /* Models */,
 				8AE513AF1E543FC2001DA27D /* Controllers */,
@@ -165,13 +165,13 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		8AE513B61E546716001DA27D /* Icons */ = {
+		8AE513B61E546716001DA27D /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				8AE513B91E546A13001DA27D /* default_thumbnail.JPG */,
 				8AE513B71E54674B001DA27D /* ic_send.png */,
 			);
-			name = Icons;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		B5BAB4AD1E55FCB5005E7CE2 /* DataProvider */ = {
