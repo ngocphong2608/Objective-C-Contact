@@ -13,12 +13,18 @@
 @property (strong, nonatomic) NSArray *contactIndexTitles;
 @property (strong, nonatomic) NSMutableDictionary *contactsDict;
 
+
+
 @end
 
 @implementation ContactsViewController
 
+NSMutableArray *selectedContacts;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    selectedContacts = [NSMutableArray new];
     
     [self.tableView setEditing:YES animated:YES];
     
@@ -50,7 +56,7 @@
 #pragma mark - Table view private methods
 
 
-- (void) setThumbnailImageForCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
+- (void) setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
     } else {
@@ -80,11 +86,6 @@
     return [_contactsDict count];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    return [_contactIndexTitles objectAtIndex:section];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSString *sectionTitle = [_contactIndexTitles objectAtIndex:section];
@@ -110,19 +111,25 @@
     
     CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
     
-    [self setThumbnailImageForCell:cell withImageData:contact.thumbnailImageData orShortName:contact.get2CharatersByFullName];
+    [self setThumbnailImageForTableCell:cell withImageData:contact.thumbnailImageData orShortName:contact.get2CharatersByFullName];
   
     cell.nameLabel.text = contact.fullName;
     
     return cell;
 }
 
+
+#pragma mark - Table view delegate methods
+
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
     return _contactIndexTitles;
 }
 
-#pragma mark - Table view editting methods
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    return [_contactIndexTitles objectAtIndex:section];
+}
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -131,11 +138,59 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"user selected %@",[[_contacts objectAtIndex:indexPath.row] fullName]);
+    NSString *sectionTitle = [_contactIndexTitles objectAtIndex:indexPath.section];
+    NSArray *sectionContacts = [_contactsDict objectForKey:sectionTitle];
+    CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
+    
+    NSLog(@"user selected %@", [contact fullName]);
+    [selectedContacts addObject:contact];
+    [_collectionView reloadData];
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"user de-selected %@",[[_contacts objectAtIndex:indexPath.row] fullName]);
+    NSString *sectionTitle = [_contactIndexTitles objectAtIndex:indexPath.section];
+    NSArray *sectionContacts = [_contactsDict objectForKey:sectionTitle];
+    CSContact *contact = [sectionContacts objectAtIndex:indexPath.row];
+    
+    NSLog(@"user de-selected %@",[contact fullName]);
+    [selectedContacts removeObject:contact];
+    [_collectionView reloadData];
+}
+
+#pragma mark - Collection view delegate methods
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    SelectedContactCell *contactCell = (SelectedContactCell *) cell;
+    contactCell.thumbnailImageView.layer.cornerRadius = contactCell.thumbnailImageView.frame.size.width / 2;
+    contactCell.thumbnailImageView.clipsToBounds = YES;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [selectedContacts count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *identifier = @"SelectedContactCell";
+    
+    SelectedContactCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    cell.thumbnailImageView.image = NULL;
+    cell.imageNameLabel.text = @"";
+    
+    CSContact *contact = [selectedContacts objectAtIndex:indexPath.row];
+    
+    [self setThumbnailImageForCollectionCell:cell withImageData:contact.thumbnailImageData orShortName:contact.get2CharatersByFullName];
+    
+    return cell;
+
+}
+
+- (void) setThumbnailImageForCollectionCell:(SelectedContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
+    if (imageData == NULL) {
+        cell.imageNameLabel.text = shortName;
+    } else {
+        cell.thumbnailImageView.image = [UIImage imageWithData:imageData];
+    }
 }
 
 @end

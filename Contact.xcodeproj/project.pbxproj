@@ -20,6 +20,7 @@
 		8AE513B51E545C3D001DA27D /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE513B41E545C3D001DA27D /* ContactCell.m */; };
 		8AE513B81E54674B001DA27D /* ic_send.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AE513B71E54674B001DA27D /* ic_send.png */; };
 		8AE513BA1E546A13001DA27D /* default_thumbnail.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 8AE513B91E546A13001DA27D /* default_thumbnail.JPG */; };
+		8AE514201E56AA7A001DA27D /* SelectedContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE5141F1E56AA7A001DA27D /* SelectedContactCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		8AE513B41E545C3D001DA27D /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 		8AE513B71E54674B001DA27D /* ic_send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_send.png; sourceTree = "<group>"; };
 		8AE513B91E546A13001DA27D /* default_thumbnail.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_thumbnail.JPG; sourceTree = "<group>"; };
+		8AE5141E1E56AA7A001DA27D /* SelectedContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedContactCell.h; sourceTree = "<group>"; };
+		8AE5141F1E56AA7A001DA27D /* SelectedContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedContactCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				8AE513B61E546716001DA27D /* Images */,
-				B5BAB4AF1E55FD3A005E7CE2 /* CustomTableCells */,
+				B5BAB4AF1E55FD3A005E7CE2 /* CustomViewCells */,
 				B5BAB4AE1E55FCF0005E7CE2 /* Models */,
 				8AE513AF1E543FC2001DA27D /* Controllers */,
 				B5BAB4AD1E55FCB5005E7CE2 /* DataProvider */,
@@ -192,13 +195,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		B5BAB4AF1E55FD3A005E7CE2 /* CustomTableCells */ = {
+		B5BAB4AF1E55FD3A005E7CE2 /* CustomViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				8AE513B31E545C3D001DA27D /* ContactCell.h */,
 				8AE513B41E545C3D001DA27D /* ContactCell.m */,
+				8AE5141E1E56AA7A001DA27D /* SelectedContactCell.h */,
+				8AE5141F1E56AA7A001DA27D /* SelectedContactCell.m */,
 			);
-			name = CustomTableCells;
+			name = CustomViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +344,7 @@
 				8AE513B51E545C3D001DA27D /* ContactCell.m in Sources */,
 				8AE513B21E544048001DA27D /* ContactsViewController.m in Sources */,
 				8AE513AB1E52C117001DA27D /* CSContactScanner.m in Sources */,
+				8AE514201E56AA7A001DA27D /* SelectedContactCell.m in Sources */,
 				8AE5137B1E52C0A4001DA27D /* AppDelegate.m in Sources */,
 				8AE513781E52C0A4001DA27D /* main.m in Sources */,
 				8AE513AE1E54106D001DA27D /* CSContact.m in Sources */,
