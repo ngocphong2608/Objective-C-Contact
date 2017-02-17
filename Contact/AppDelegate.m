@@ -17,19 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-//    
-//    ContactsViewController *contactController = [navigationController viewControllers][0];
-//    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//        contactController.contacts = [CSContactScanner.contactManager getAllContacts];
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            
-//            [contactController.tableView reloadData];
-//            NSLog(@"Updated");
-//        });
-//    });
 
     return YES;
 }

@@ -56,7 +56,6 @@ UIImage *defaultThumbnail;
 
 #pragma mark - Table view private methods
 
-
 - (void) setThumbnailImageForTableCell:(ContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
@@ -120,7 +119,6 @@ UIImage *defaultThumbnail;
     return cell;
 }
 
-
 #pragma mark - Table view delegate methods
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -157,6 +155,12 @@ UIImage *defaultThumbnail;
     NSLog(@"user de-selected %@",[contact fullName]);
     [selectedContacts removeObject:contact];
     [_collectionView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    ContactCell *contactCell = (ContactCell *)cell;
+    contactCell.thumbnailImageView.layer.cornerRadius = contactCell.thumbnailImageView.frame.size.width / 2;
+    contactCell.thumbnailImageView.clipsToBounds = YES;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

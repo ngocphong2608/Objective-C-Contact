@@ -13,13 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    _thumbnailImageView.layer.cornerRadius = _thumbnailImageView.frame.size.width / 2;
-    _thumbnailImageView.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

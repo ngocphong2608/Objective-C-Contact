@@ -14,6 +14,4 @@
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *imageNameLabel;
 
-
-
 @end
