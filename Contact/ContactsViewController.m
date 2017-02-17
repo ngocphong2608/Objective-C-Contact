@@ -86,8 +86,8 @@ UIImage *defaultThumbnail;
     
     contactSectionTitles = [[contactsDict allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
-    NSLog(@"%@", contactsDict);
-    NSLog(@"%@", contactSectionTitles);
+//    NSLog(@"%@", contactsDict);
+//    NSLog(@"%@", contactSectionTitles);
 }
 
 #pragma mark - Table view data source
@@ -129,7 +129,7 @@ UIImage *defaultThumbnail;
     return cell;
 }
 
-#pragma mark - Table view delegate methods
+#pragma mark - Table view delegate
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
@@ -200,13 +200,7 @@ UIImage *defaultThumbnail;
 //    return YES;
 //}
 
-#pragma mark - Collection view delegate methods
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    SelectedContactCell *contactCell = (SelectedContactCell *) cell;
-    contactCell.thumbnailImageView.layer.cornerRadius = contactCell.thumbnailImageView.frame.size.width / 2;
-    contactCell.thumbnailImageView.clipsToBounds = YES;
-}
+#pragma mark - Collection view datasource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [selectedContacts count];
@@ -228,12 +222,50 @@ UIImage *defaultThumbnail;
 
 }
 
+#pragma mark - Collection view delegate
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    SelectedContactCell *contactCell = (SelectedContactCell *) cell;
+    contactCell.thumbnailImageView.layer.cornerRadius = contactCell.thumbnailImageView.frame.size.width / 2;
+    contactCell.thumbnailImageView.clipsToBounds = YES;
+}
+
 - (void)setThumbnailImageForCollectionCell:(SelectedContactCell *)cell withImageData:(NSData *)imageData orShortName:(NSString *) shortName{
     if (imageData == NULL) {
         cell.imageNameLabel.text = shortName;
     } else {
         cell.thumbnailImageView.image = [UIImage imageWithData:imageData];
     }
+}
+
+- (NSIndexPath *)indexPathFromContact:(CSContact *)contact {
+    // not implement
+    NSString *character = [[contact fullName] substringToIndex:1];
+    int section = 0;
+    for (int i = 0; i < [contactSectionTitles count]; i++) {
+        if ([character isEqualToString:contactSectionTitles[i]])
+            section = i;
+    }
+    
+    NSArray* contactsInSection = contactsDict[character];
+    int row = 0;
+    for (int i = 0; i < [contactsInSection count]; i++) {
+        if ([contact isEqual:contactsInSection[i]])
+            row = i;
+    }
+    
+//    NSLog(@"%d %d", section, row);
+    
+    return [NSIndexPath indexPathForRow:row inSection:section];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CSContact *contact = selectedContacts[indexPath.row];
+
+    NSIndexPath *tableIndexPath = [self indexPathFromContact:contact];
+    
+    [_tableView scrollToRowAtIndexPath:tableIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 @end
